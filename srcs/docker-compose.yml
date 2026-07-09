@@ -41,6 +41,9 @@ services:
       - inception_net
     env_file:
       - "./.env"
+    secrets:
+      - sql_credentials
+      - wp_credentials
 
   wordpress:
     build: ./requirements/wordpress
@@ -55,6 +58,9 @@ services:
       - "./.env"
     depends_on:
       - mariadb
+    secrets:
+      - sql_credentials
+      - wp_credentials
 
 volumes:
   wp-volume:
@@ -71,3 +77,9 @@ volumes:
 networks:
   inception_net:
     driver: bridge
+
+secrets:
+  sql_credentials:
+    file: ../secrets/sql_credentials.txt
+  wp_credentials:
+    file: ../secrets/wp_credentials.txt

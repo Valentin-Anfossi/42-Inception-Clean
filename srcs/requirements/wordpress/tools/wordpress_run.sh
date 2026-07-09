@@ -1,6 +1,16 @@
 #!/bin/bash
 set -e
 
+#Get secrets from the very secret secretive secret files of secrets (oooo)
+for f in /run/secrets/*; do
+  [ -f "$f" ] || continue
+  set -a
+  . "$f"
+  set +a
+done
+
+sleep 10
+
 if [ ! -f /var/www/html/wp-config.php ]; then
     echo "Installing WordPress..."
     wget https://wordpress.org/wordpress-7.0.tar.gz --progress=bar:force:noscroll -P /tmp

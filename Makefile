@@ -20,4 +20,6 @@ fileclean:
 	@sudo rm -rf /home/vanfossi/data/wp_data
 	@mkdir -p /home/vanfossi/data/wp_data
 
+fclean: clean fileclean
+
 .PHONY: all down re clean fileclean

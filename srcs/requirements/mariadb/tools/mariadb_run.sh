@@ -4,6 +4,14 @@ set -e
 mkdir -p /run/mysqld
 chown mysql:mysql /run/mysqld
 
+#Get secrets from the very secret secretive secret files of secrets (oooo)
+for f in /run/secrets/*; do
+  [ -f "$f" ] || continue
+  set -a
+  . "$f"
+  set +a
+done
+
 #Checks if database has already been initialized
 if [ ! -f /var/lib/mysql/.init_flag ]; then
     echo "Initializing database..."
