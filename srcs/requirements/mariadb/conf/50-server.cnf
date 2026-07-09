@@ -12,11 +12,13 @@
 # * Basic Settings
 #
 
+#STUFF I ADDED
 datadir = /var/lib/mysql
 socket  = /run/mysqld/mysqld.sock
 bind_address=*
 port = 3306
 user = mysql
+#END OF ADDED STUFF BY ME
 
 pid-file                = /run/mysqld/mysqld.pid
 basedir                 = /usr

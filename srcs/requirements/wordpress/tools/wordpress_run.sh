@@ -2,12 +2,19 @@
 set -e
 
 #Get secrets from the very secret secretive secret files of secrets (oooo)
-for f in /run/secrets/*; do
-  [ -f "$f" ] || continue
-  set -a
-  . "$f"
-  set +a
-done
+load_secrets() {
+    local secrets_dir="/run/secrets"
+    [ -d "$secrets_dir" ] || return 0
+
+    for secret_file in "$secrets_dir"/*; do
+        [ -f "$secret_file" ] || continue
+        set -a
+        source "$secret_file"
+        set +a
+    done
+}
+
+load_secrets
 
 sleep 10
 
@@ -22,7 +29,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     wp core install \
         --allow-root \
         --path=/var/www/html \
-        --url="${WP_URL}" \
+        --url="${USERNAME}.42.fr" \
         --title="${WP_TITLE}" \
         --admin_user="${WP_ADMIN_USER}" \
         --admin_password="${WP_ADMIN_PASSWORD}" \

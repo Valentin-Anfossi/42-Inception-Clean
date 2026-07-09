@@ -5,19 +5,28 @@ mkdir -p /run/mysqld
 chown mysql:mysql /run/mysqld
 
 #Get secrets from the very secret secretive secret files of secrets (oooo)
-for f in /run/secrets/*; do
-  [ -f "$f" ] || continue
-  set -a
-  . "$f"
-  set +a
-done
+load_secrets() {
+    local secrets_dir="/run/secrets"
+    [ -d "$secrets_dir" ] || return 0
+
+    for secret_file in "$secrets_dir"/*; do
+        [ -f "$secret_file" ] || continue
+        set -a
+        source "$secret_file"
+        set +a
+    done
+}
+
+load_secrets
 
 #Checks if database has already been initialized
 if [ ! -f /var/lib/mysql/.init_flag ]; then
     echo "Initializing database..."
 
     mariadb-install-db --user=mysql --datadir=/var/lib/mysql
-    #You could use mariadb here as well but you wouldn't see error logs in console
+    #I use mysqld_safe here instead of mariadbd because mariadbd doesn't have --skip-syslog
+    #and i like dem logs
+    #looks like hacker stuff
     mysqld_safe --datadir=/var/lib/mysql --skip-syslog &
 
     until mysql -e "SELECT 1;" &> /dev/null; do
