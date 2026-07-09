@@ -1,35 +1,19 @@
-The README.md must include at least:
-•The very first line must be italicized and read: This project has been created as part
-of the 42 curriculum by <login1>[, <login2>[, <login3>[...]]].
-•A “Description” section that clearly presents the project, including its goal and a
-brief overview.
-•An “Instructions” section containing any relevant information about compilation,
-installation, and/or execution.
-•A “Resources” section listing classic references related to the topic (documen-
-tation, articles, tutorials, etc.), as well as a description of how AI was used —
-specifying for which tasks and which parts of the project.
-➠ Additional sections may be required depending on the project (e.g., usage
-examples, feature list, technical choices, etc.).
-Any required additions will be explicitly listed below.
-•A Project description section must also explain the use of Docker and the sources
-included in the project. It must indicate the main design choices, as well as a
-comparison between:
-◦Virtual Machines vs Docker
-◦Secrets vs Environment Variables
-◦Docker Network vs Host Network
-◦Docker Volumes vs Bind Mounts
-
 *This project has been created as part of the 42 curriculum by vanfossi.*
 
 # Inception
 
 ## Description
 
-Inception is a system administration project that sets up a small containerized infrastructure using **Docker** and **Docker Compose**. It deploys a **WordPress** site behind an **NGINX** reverse proxy, backed by a **MariaDB** database, with each service running in its own container built from a custom `Dockerfile`. The goal is to practice container orchestration, service isolation, persistent storage, and secure credential management.
+Inception is a system administration project that sets up a small containerized infrastructure using **Docker** and **Docker Compose**. It deploys a **WordPress** site behind an **NGINX**, backed by a **MariaDB** database, with each service running in its own container built from a custom `Dockerfile`. The goal is to practice container creation, apps isolation, persistent storage, and secure credential management.
 
 ## Instructions
 
 **Requirements:** Docker, Docker Compose, `make`, sudo access (to edit `/etc/hosts`).
+
+**Automated Setup:**
+A init.sh shell script present at the root of the project can do most of the annoying parts of the configuration for you.
+Follow the prompts and if all goes well, you'll end up with a functionning setup.
+If not, see below :
 
 **Setup:**
 1. `git clone <repo-url> && cd inception`
@@ -76,4 +60,5 @@ https://tuto.grademe.fr/inception/
 
 ## AI Usage
 
-AI has been used at various points of the project, mostly for fixing typos/formatting these docs files but also to help parse nginx/mariadb docs for some edge cases I was struggling with.
+AI has been used at various points of the project, mostly for fixing typos/formatting these docs files but also to help parse nginx/mariadb docs for figuring out some edge cases I was struggling with.
+All the struggle and pain was purely human generated.
