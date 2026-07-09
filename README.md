@@ -73,3 +73,7 @@ https://www.wp-script.com/adult-wordpress-plugins/wp-script-core/
 
 General tutorial for the project (not up to date but useful):
 https://tuto.grademe.fr/inception/
+
+## AI Usage
+
+AI has been used at various points of the project, mostly for fixing typos/formatting these docs files but also to help parse nginx/mariadb docs for some edge cases I was struggling with.

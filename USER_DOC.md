@@ -1,5 +1,12 @@
 # User Documentation
 
+### Installation script
+
+Most of the configuration can be automated with the init.sh script located in the /srcs/ folder of the repo. 
+It's made to be ran on a new Ubuntu virtual machine and it will need SU so use it at your own risk.
+The repo needs to be located in the /home/USERNAME/Documents/Inception/ folder for it to work.
+Once launched just follow the instructions.
+
 ## 1. Services Overview
 
 This repository sets up an infrastructure made of **3 Docker containers**, each with a specific role:

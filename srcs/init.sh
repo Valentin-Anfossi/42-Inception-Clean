@@ -44,47 +44,38 @@ else
 fi
 
 # Create secrets files
-mkdir -p /home/$USERNAME/secrets
+mkdir -p /home/$USERNAME/Documents/Inception/secrets
 echo "========== CREATING SECRETS FILES =========="
-if [ ! -f /home/$USERNAME/secrets/sql_credentials.txt ]; then
+if [ ! -f /home/$USERNAME/Documents/Inception/secrets/sql_credentials.txt ]; then
     echo "Creating sql_credentials.txt..."
     echo "SQL_ROOT_PASSWORD ?"
     read -r value
-    echo "SQL_ROOT_PASSWORD=$value" >> /home/$USERNAME/secrets/sql_credentials.txt
+    echo "SQL_ROOT_PASSWORD=$value" >> /home/$USERNAME/Documents/Inception/secrets/sql_credentials.txt
     echo "SQL_USER ?"
     read -r value
-    echo "SQL_USER=$value" >> /home/$USERNAME/secrets/sql_credentials.txt
+    echo "SQL_USER=$value" >> /home/$USERNAME/Documents/Inception/secrets/sql_credentials.txt
     echo "SQL_PASSWORD ?"
     read -r value
-    echo "SQL_PASSWORD=$value" >> /home/$USERNAME/secrets/sql_credentials.txt
+    echo "SQL_PASSWORD=$value" >> /home/$USERNAME/Documents/Inception/secrets/sql_credentials.txt
     echo "SQL_ADMIN ?"
     read -r value
-    echo "SQL_ADMIN=$value" >> /home/$USERNAME/secrets/sql_credentials.txt
+    echo "SQL_ADMIN=$value" >> /home/$USERNAME/Documents/Inception/secrets/sql_credentials.txt
     echo "SQL_ADMINPASSWORD ?"
     read -r value
-    echo "SQL_ADMINPASSWORD=$value" >> /home/$USERNAME/secrets/sql_credentials.txt
+    echo "SQL_ADMINPASSWORD=$value" >> /home/$USERNAME/Documents/Inception/secrets/sql_credentials.txt
     echo "sql_credentials.txt created."
 fi
 
-if [ ! -f /home/$USERNAME/secrets/wp_credentials.txt ]; then
+if [ ! -f /home/$USERNAME/Documents/Inception/secrets/wp_credentials.txt ]; then
     echo "Creating wp_credentials.txt..."
     echo "WP_ADMIN_USER ?"
     read -r value
-    echo "WP_ADMIN_USER=$value" >> /home/$USERNAME/secrets/wp_credentials.txt
+    echo "WP_ADMIN_USER=$value" >> /home/$USERNAME/Documents/Inception/secrets/wp_credentials.txt
     echo "WP_ADMIN_PASSWORD ?"
     read -r value
-    echo "WP_ADMIN_PASSWORD=$value" >> /home/$USERNAME/secrets/wp_credentials.txt
+    echo "WP_ADMIN_PASSWORD=$value" >> /home/$USERNAME/Documents/Inception/secrets/wp_credentials.txt
     echo "WP_ADMIN_EMAIL ?"
     read -r value
-    echo "WP_ADMIN_EMAIL=$value" >> /home/$USERNAME/secrets/wp_credentials.txt
+    echo "WP_ADMIN_EMAIL=$value" >> /home/$USERNAME/Documents/Inception/secrets/wp_credentials.txt
     echo "wp_credentials.txt created."
 fi
-
-# Create gitHub ssh key
-ssh-keygen -t ed25519 -C "vanfossi@student.42nice.fr"
-ssh-keygen -t ed25519 -C "vanfossi@student.42nice.fr" -f ~/.ssh/inception -q -N ""
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/inception
-echo "============ SSH PUBLIC KEY : ============"
-cat ~/.ssh/inception.pub
-echo "=========================================="

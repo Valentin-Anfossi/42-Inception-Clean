@@ -16,6 +16,13 @@ git clone <repo-url>
 cd inception
 ```
 
+### Installation script
+
+Most of the configuration can be automated with the init.sh script located in the /srcs/ folder of the repo. 
+It's made to be ran on a new Ubuntu virtual machine so use it at your own risk.
+The repo needs to be located in the /home/USERNAME/Documents/Inception/ folder for it to work.
+Once launched just follow the instructions.
+
 ### 1.3 Configuration Files
 
 The project relies on two kinds of configuration:
