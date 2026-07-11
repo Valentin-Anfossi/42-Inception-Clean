@@ -1,6 +1,7 @@
 FROM debian:bookworm
 
-RUN apt-get update && apt-get upgrade -y && apt-get install -y \
+RUN apt-get update -y && apt-get upgrade -y
+RUN apt-get install -y \
     wget \
     curl \
     php-fpm \
