@@ -11,7 +11,7 @@ RUN	mkdir -p /etc/nginx/ssl && \
 	openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
   	-keyout /etc/nginx/ssl/nginx.key \
  	-out /etc/nginx/ssl/nginx.crt \
-	-subj "/C=FR/ST=Paris/L=Nice/O=42/CN=vanfossi"
+	-subj "/C=FR/ST=Paris/L=Nice/O=42/CN=vanfossi.42.fr"
 
 COPY ./conf/nginx.conf /etc/nginx/conf.d
 
