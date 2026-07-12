@@ -16,13 +16,6 @@ git clone <repo-url>
 cd inception
 ```
 
-### Installation script
-
-Most of the configuration can be automated with the init.sh script located in the /srcs/ folder of the repo. 
-It's made to be ran on a new Ubuntu virtual machine so use it at your own risk.
-The repo needs to be located in the /home/USERNAME/Documents/Inception/ folder for it to work.
-Once launched just follow the instructions.
-
 ### 1.3 Configuration Files
 
 The project relies on two kinds of configuration:
@@ -69,16 +62,11 @@ Everything is orchestrated through a `Makefile` wrapping `docker compose` calls,
 | Command | Effect |
 |---|---|
 | `make all` | Builds the images and starts all containers in detached mode |
+| 'make up' | Starts all containers without building |
 | `make down` | Stops and removes the running containers |
 | `make re` | Equivalent to `make down` followed by `make all` (rebuild + relaunch) |
 | `make clean` | Stops the containers and removes the containers and volumes created by the project |
 | `make fclean` | Same as `make clean`, but also deletes the persistent WordPress and database data on disk |
-
-Under the hood, `make all` typically runs something like:
-
-```bash
-docker compose -f srcs/docker-compose.yml up --build -d
-```
 
 ## 3. Managing Containers and Volumes
 

@@ -25,8 +25,6 @@ if [ ! -f /var/lib/mysql/.init_flag ]; then
 
     mariadb-install-db --user=mysql --datadir=/var/lib/mysql
     #I use mysqld_safe here instead of mariadbd because mariadbd doesn't have --skip-syslog
-    #and i like dem logs
-    #looks like hacker stuff
     mysqld_safe --datadir=/var/lib/mysql --skip-syslog &
 
     until mysql -e "SELECT 1;" &> /dev/null; do

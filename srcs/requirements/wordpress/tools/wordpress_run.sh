@@ -16,6 +16,7 @@ load_secrets() {
 
 load_secrets
 
+# We sleep for mariadb to finish
 sleep 10
 
 if [ ! -f /var/www/html/wp-config.php ]; then
@@ -37,4 +38,6 @@ if [ ! -f /var/www/html/wp-config.php ]; then
         --skip-email
     echo "WordPress installed."
 fi
+
+# This exec replaces the entrypoint process with the cmd passed in the dockerfile
 exec "$@"

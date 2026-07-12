@@ -38,6 +38,8 @@ All operations go through the `Makefile` at the root of the project:
 
 ## 4. Managing Credentials
 
+Credentials can be generated with the secrets_init.sh script at the root of the repo.
+
 Credentials are managed through **Docker secrets** and must be provided in two text files located in the `secrets/` folder:
 
 **`sql_credentials.txt`**

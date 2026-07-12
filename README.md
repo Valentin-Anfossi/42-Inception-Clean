@@ -60,5 +60,4 @@ https://tuto.grademe.fr/inception/
 
 ## AI Usage
 
-AI has been used at various points of the project, mostly for fixing typos/formatting these docs files but also to help parse nginx/mariadb docs for figuring out some edge cases I was struggling with.
-All the struggle and pain was purely human generated.
+AI has been used at various points of the project, mostly for fixing typos/formatting these docs files but also to help parse nginx/mariadb docs for figuring out some edge cases I couldn't easily find an answer to.
