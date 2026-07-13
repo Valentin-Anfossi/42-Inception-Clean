@@ -1,11 +1,8 @@
 # User Documentation
 
-### Installation script
+## Installation details
 
-Most of the configuration can be automated with the init.sh script located in the /srcs/ folder of the repo. 
-It's made to be ran on a new Ubuntu virtual machine and it will need SU so use it at your own risk.
-The repo needs to be located in the /home/USERNAME/Documents/Inception/ folder for it to work.
-Once launched just follow the instructions.
+For installing and configuring the projet, see **DEV_DOC.md**
 
 ## 1. Services Overview
 
@@ -26,6 +23,7 @@ All operations go through the `Makefile` at the root of the project:
 | Command | Effect |
 |---|---|
 | `make all` | Builds the images and starts the containers |
+| `make up` | Starts all containers without building |
 | `make down` | Stops all containers |
 | `make re` | Stops, rebuilds, and restarts the containers |
 | `make clean` | Stops and removes the containers as well as the created volumes |

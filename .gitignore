@@ -1,2 +1,3 @@
-secrets/
+secrets/sql_credentials.txt
+secrets/wp_credentials.txt
 en.subject.pdf

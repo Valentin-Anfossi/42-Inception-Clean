@@ -13,7 +13,7 @@
 
 ```bash
 git clone <repo-url>
-cd inception
+cd inceptions
 ```
 
 ### 1.3 Configuration Files
@@ -43,7 +43,10 @@ WP_ADMIN_PASSWORD=xxx
 WP_ADMIN_EMAIL=xxx
 ```
 
+An **interactive script** `secrets_init.sh` located in ./secrets/ can generate the files for you.
+
 These files are mounted into the containers as Docker secrets (declared under the `secrets:` key in `docker-compose.yml`) and read at container startup by the entrypoint scripts, rather than being baked into the images.
+
 
 ### 1.4 Hosts File
 
@@ -55,6 +58,34 @@ Add an entry pointing your domain to `localhost` so that `https://[username].42.
 
 (on Linux/macOS this goes in `/etc/hosts`, and requires sudo to edit).
 
+### 1.5 Add current user to docker group
+
+```
+sudo usermod -aG docker $USERNAME
+sudo newgrp docker
+```
+
+### 1.6 Create the two data folders for wordpress and database persitence
+
+```
+mkdir -p /home/$USERNAME/data/db_data
+mkdir -p /home/$USERNAME/data/wp_data
+```
+
+### 1.7 Modify the hosts file
+
+```
+if grep -q "$USERNAME.42.fr" /etc/hosts
+then
+    echo "hosts file already modified"
+else
+    echo "127.0.0.1 $USERNAME.42.fr" > /tmp/temp_hosts
+    cat /etc/hosts >> /tmp/temp_hosts
+    sudo mv /tmp/temp_hosts /etc/hosts
+    echo "hosts file modified"
+fi
+```
+
 ## 2. Building and Launching the Project
 
 Everything is orchestrated through a `Makefile` wrapping `docker compose` calls, and a `docker-compose.yml` defining the three services (`nginx`, `mariadb`, `wordpress`), each built from its own `Dockerfile` under `srcs/requirements/`.
@@ -62,7 +93,7 @@ Everything is orchestrated through a `Makefile` wrapping `docker compose` calls,
 | Command | Effect |
 |---|---|
 | `make all` | Builds the images and starts all containers in detached mode |
-| 'make up' | Starts all containers without building |
+| `make up` | Starts all containers without building |
 | `make down` | Stops and removes the running containers |
 | `make re` | Equivalent to `make down` followed by `make all` (rebuild + relaunch) |
 | `make clean` | Stops the containers and removes the containers and volumes created by the project |
