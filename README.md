@@ -8,7 +8,7 @@ Inception is a system administration project that sets up a small containerized 
 
 ## Instructions
 
-**For more complete instructions** See `USER_DOC.md`
+**For more complete instructions** See `DEV_DOC.md`
 
 **Requirements:** Docker, Docker Compose, `make`, sudo access (to edit `/etc/hosts`).
 
@@ -49,7 +49,9 @@ https://nginx.org/en/docs/
 
 Wordpress and mariadb containers creation :
 https://fr.wordpress.org/support/article/how-to-install-wordpress/
+
 https://community.hetzner.com/tutorials/dockerizing-mariadb-with-alpine-linux
+
 https://www.wp-script.com/adult-wordpress-plugins/wp-script-core/
 
 General tutorial for the project (not up to date but useful):
