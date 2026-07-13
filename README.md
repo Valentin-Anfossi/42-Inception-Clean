@@ -8,12 +8,9 @@ Inception is a system administration project that sets up a small containerized 
 
 ## Instructions
 
-**Requirements:** Docker, Docker Compose, `make`, sudo access (to edit `/etc/hosts`).
+**For more complete instructions** See `USER_DOC.md`
 
-**Automated Setup:**
-A init.sh shell script present at the root of the project can do most of the annoying parts of the configuration for you.
-Follow the prompts and if all goes well, you'll end up with a functionning setup.
-If not, see below :
+**Requirements:** Docker, Docker Compose, `make`, sudo access (to edit `/etc/hosts`).
 
 **Setup:**
 1. `git clone <repo-url> && cd inception`
@@ -60,4 +57,4 @@ https://tuto.grademe.fr/inception/
 
 ## AI Usage
 
-AI has been used at various points of the project, mostly for fixing typos/formatting these docs files but also to help parse nginx/mariadb docs for figuring out some edge cases I couldn't easily find an answer to.
+AI has been used at various points of the project, mostly for fixing typos/formatting these docs files but also in a teaching role to help parse nginx/mariadb docs.

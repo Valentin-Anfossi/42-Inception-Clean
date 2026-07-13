@@ -1,5 +1,3 @@
-# https://nginx.org/en/docs/configure.html
-
 FROM debian:bookworm
 
 RUN apt-get update -y && apt-get upgrade -y
