@@ -49,7 +49,9 @@ https://nginx.org/en/docs/
 
 Wordpress and mariadb containers creation :
 https://fr.wordpress.org/support/article/how-to-install-wordpress/
+
 https://community.hetzner.com/tutorials/dockerizing-mariadb-with-alpine-linux
+
 https://www.wp-script.com/adult-wordpress-plugins/wp-script-core/
 
 General tutorial for the project (not up to date but useful):
