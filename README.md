@@ -8,7 +8,7 @@ Inception is a system administration project that sets up a small containerized 
 
 ## Instructions
 
-**For more complete instructions** See `USER_DOC.md`
+**For more complete instructions** See `DEV_DOC.md`
 
 **Requirements:** Docker, Docker Compose, `make`, sudo access (to edit `/etc/hosts`).
 
