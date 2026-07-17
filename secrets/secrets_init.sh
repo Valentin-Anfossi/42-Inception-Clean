@@ -25,14 +25,12 @@ fi
 if [ ! -f ./wp_credentials.txt ]; then
     echo "Creating wp_credentials.txt..."
     echo "WP_ADMIN_USER ?"
-    read -r value
-    echo "WP_ADMIN_USER=$value" >> ./wp_credentials.txt
+    read -r user
+    echo "WP_ADMIN_USER=$user" >> ./wp_credentials.txt
     echo "WP_ADMIN_PASSWORD ?"
     read -r value
     echo "WP_ADMIN_PASSWORD=$value" >> ./wp_credentials.txt
-    echo "WP_ADMIN_EMAIL ?"
-    read -r value
-    echo "WP_ADMIN_EMAIL=$value" >> ./wp_credentials.txt
+    echo "WP_ADMIN_EMAIL=$user@42.student.fr" >> ./wp_credentials.txt
     echo "wp_credentials.txt created."
 else
     echo "wp_credentials.txt already exists."

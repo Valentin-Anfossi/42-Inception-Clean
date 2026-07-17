@@ -21,6 +21,7 @@ sleep 10
 
 if [ ! -f /var/www/html/wp-config.php ]; then
     echo "Installing WordPress..."
+    rm -rf /var/www/html/*
     wget https://wordpress.org/wordpress-7.0.tar.gz -P /tmp
     tar -xzf /tmp/wordpress-7.0.tar.gz --directory /tmp
     cp -r /tmp/wordpress/. /var/www/html/

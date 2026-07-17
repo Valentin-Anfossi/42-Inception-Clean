@@ -23,8 +23,6 @@ fileclean:
 	@echo "Removing data directories..."
 	@sudo rm -rf ${HOME}/data/db_data
 	@sudo rm -rf ${HOME}/data/wp_data
-	@mkdir -p ${HOME}/data/db_data
-	@mkdir -p ${HOME}/data/wp_data
 
 fclean: clean fileclean
 
