@@ -53,12 +53,12 @@ volumes:
   wp-volume:
     driver_opts:
       type: none
-      device: /home/vanfossi/data/wp_data
+      device: "$HOME/data/wp_data"
       o: bind
   db-volume:
     driver_opts:
       type: none
-      device: /home/vanfossi/data/db_data
+      device: "$HOME/data/db_data"
       o: bind
 
 networks:

@@ -1,4 +1,6 @@
 all:
+	@mkdir -p ${HOME}/data/wp_data
+	@mkdir -p ${HOME}/data/db_data
 	@docker compose -f ./srcs/docker-compose.yml up --build -d
 
 up:
@@ -19,10 +21,10 @@ clean:
 
 fileclean:
 	@echo "Removing data directories..."
-	@sudo rm -rf /home/vanfossi/data/db_data
-	@mkdir -p /home/vanfossi/data/db_data
-	@sudo rm -rf /home/vanfossi/data/wp_data
-	@mkdir -p /home/vanfossi/data/wp_data
+	@sudo rm -rf ${HOME}/data/db_data
+	@sudo rm -rf ${HOME}/data/wp_data
+	@mkdir -p ${HOME}/data/db_data
+	@mkdir -p ${HOME}/data/wp_data
 
 fclean: clean fileclean
 
