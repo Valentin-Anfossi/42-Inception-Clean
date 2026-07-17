@@ -46,6 +46,9 @@ if [ ! -f /var/lib/mysql/.init_flag ]; then
     mysqladmin -u root -p"${SQL_ROOT_PASSWORD}" shutdown
     touch /var/lib/mysql/.init_flag
     echo "Database initialized. Restarting MariaDB..."
+
+    else
+    echo "Database already initialized. skipping..."
 fi
 
 exec mariadbd --user=mysql --datadir=/var/lib/mysql

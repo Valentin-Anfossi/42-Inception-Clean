@@ -14,10 +14,11 @@ re:
 	@docker compose -f ./srcs/docker-compose.yml up --build -d
 
 clean:
-	@docker stop $$(docker ps -qa); \
-	docker rm $$(docker ps -qa); \
-	docker rmi $$(docker images -qa); \
-	docker volume rm $$(docker volume ls -q); \
+	-docker stop $$(docker ps -qa)
+	-docker rm $$(docker ps -qa)
+	-docker rmi $$(docker images -qa)
+	-docker volume rm $$(docker volume ls -q)
+	-docker network rm srcs_inception_net
 
 fileclean:
 	@echo "Removing data directories..."

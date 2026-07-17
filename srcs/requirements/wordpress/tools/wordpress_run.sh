@@ -12,6 +12,7 @@ load_secrets() {
         source "$secret_file"
         set +a
     done
+    echo "Secrets loaded into env variables"
 }
 
 load_secrets
@@ -38,6 +39,8 @@ if [ ! -f /var/www/html/wp-config.php ]; then
         --admin_email="${WP_ADMIN_EMAIL}" \
         --skip-email
     echo "WordPress installed."
+else
+    echo "wp-config.php present, skipping wordpress install"
 fi
 
 # This exec replaces the entrypoint process with the cmd passed in the dockerfile
