@@ -35,3 +35,15 @@ if [ ! -f ./wp_credentials.txt ]; then
 else
     echo "wp_credentials.txt already exists."
 fi
+
+if [ ! -f ./ftp_credentials.txt ]; then
+    echo "Creating ftp_credentials.txt..."
+    echo "FTP_USER ?"
+    read -r value
+    echo "FTP_USER=$user" >> ./ftp_credentials.txt
+    echo "FTP_PASSWORD ?"
+    read -r value
+    echo "FTP_PASSWORD=$value" >> ./ftp_credentials.txt
+else
+    echo "ftp_credentials.txt already exists."
+fi

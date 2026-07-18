@@ -51,4 +51,5 @@ if [ ! -f /var/lib/mysql/.init_flag ]; then
     echo "Database already initialized. skipping..."
 fi
 
-exec mariadbd --user=mysql --datadir=/var/lib/mysql
+# This exec replaces the entrypoint process with the cmd passed in the dockerfile
+exec "$@"

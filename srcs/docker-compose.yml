@@ -61,6 +61,23 @@ services:
     secrets:
       - sql_credentials
       - wp_credentials
+    
+  ftp:
+    build: ./requirements/ftp
+    container_name: ftp
+    image: ftp
+    restart: always
+    ports:
+      - "20:20"
+      - "21:21"
+    volumes:
+      - wp-volume:/var/www/html
+    networks:
+      - inception_net
+    depends_on:
+      - wordpress
+    secrets:
+      - ftp_credentials
 
 volumes:
   wp-volume:
@@ -83,3 +100,5 @@ secrets:
     file: ../secrets/sql_credentials.txt
   wp_credentials:
     file: ../secrets/wp_credentials.txt
+  ftp_credentials:
+    file: ../secrets/ftp_credentials.txt

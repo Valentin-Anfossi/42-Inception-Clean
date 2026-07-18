@@ -12,3 +12,5 @@ COPY ./tools/mariadb_run.sh /usr/local/bin/mariadb_run.sh
 RUN chmod +x /usr/local/bin/mariadb_run.sh
 
 ENTRYPOINT [ "/usr/local/bin/mariadb_run.sh" ]
+
+CMD ["mariadbd", "--user=mysql", "--datadir=/var/lib/mysql"]
