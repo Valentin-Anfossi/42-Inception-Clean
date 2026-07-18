@@ -10,11 +10,13 @@ RUN apt-get install -y \
     mariadb-client
 
 COPY ./tools/wordpress_run.sh /usr/local/bin/wordpress_run.sh
-COPY ./config/wp-config.php /tmp/wp-config.php
+
+#Config creation happens in entrypoint now
+# COPY ./config/wp-config.php /tmp/wp-config.php
 
 RUN chmod +x /usr/local/bin/wordpress_run.sh
 
-#Modify php to listen 9000 and not clear env variables
+#Modify php conf to listen 9000 and not clear env variables (why ?! WHY)
 RUN sed -i 's|listen = /run/php/php8.2-fpm.sock|listen = 9000|' /etc/php/8.2/fpm/pool.d/www.conf
 RUN sed -i 's|;clear_env = no|clear_env = no|' /etc/php/8.2/fpm/pool.d/www.conf
 

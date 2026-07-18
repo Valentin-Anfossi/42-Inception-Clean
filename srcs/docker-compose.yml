@@ -30,6 +30,18 @@ services:
       - sql_credentials
       - wp_credentials
 
+  redis:
+    build: ./requirements/redis
+    container_name: redis
+    image: redis
+    restart: always
+    networks:
+      - inception_net
+    env_file:
+      - "./.env"
+    volumes:
+      - wp-volume:/var/www/html
+
   wordpress:
     build: ./requirements/wordpress
     container_name: wordpress
@@ -45,6 +57,7 @@ services:
       - USERNAME=$USERNAME
     depends_on:
       - mariadb
+      - redis
     secrets:
       - sql_credentials
       - wp_credentials
