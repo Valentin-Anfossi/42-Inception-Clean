@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Cmd for mounting vbox shared folder
+#sudo mount -t vboxsf inception /usr/local/inception
+
 #INSTALL GIT
 sudo apt install git -y
 #INSTALL MAKE
@@ -34,7 +37,8 @@ echo "Docker installed"
 
 #Adding user to docker group
 echo "Adding user to docker group ..."
-sudo usermod -aG docker $USERNAME
+sudo groupadd docker
+sudo usermod -aG docker $USER
 
 #Cleaning
 sudo apt autoremove -y
@@ -57,7 +61,8 @@ else
 fi
 
 #LAUNCH secrets_init.sh
-bash ./secrets/secrets_init.sh
+cd secrets
+sudo bash ./secrets_init.sh
 
 echo "==================INCEPTION INSTALLED"
 echo "PLEASE RELOG FOR DOCKER GROUP REFRESH"

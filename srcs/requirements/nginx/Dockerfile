@@ -13,9 +13,13 @@ RUN	mkdir -p /etc/nginx/ssl && \
 	-subj "/C=FR/ST=Paris/L=Nice/O=42/CN=vanfossi.42.fr"
 
 COPY ./conf/nginx.conf /etc/nginx/conf.d
+COPY ./tools/nginx_run.sh /usr/local/bin/nginx_run.sh
+RUN chmod +x /usr/local/bin/nginx_run.sh
 
 RUN mkdir -p /run/nginx
 
 EXPOSE 443
+
+ENTRYPOINT ["/usr/local/bin/nginx_run.sh"]
 
 CMD ["nginx", "-g", "daemon off ;"]
