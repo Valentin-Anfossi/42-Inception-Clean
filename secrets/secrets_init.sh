@@ -47,3 +47,15 @@ if [ ! -f ./ftp_credentials.txt ]; then
 else
     echo "ftp_credentials.txt already exists."
 fi
+
+if [ ! -f ./cockpit_credentials.txt ]; then
+    echo "Creating cockpit_credentials.txt..."
+    echo "COCKPIT USER ?"
+    read -r value
+    echo "COCKPIT_USER=$value" >> ./cockpit_credentials.txt
+    echo "COCKPIT PASSWORD ?"
+    read -r value
+    echo "COCKPIT_PASSWORD=$value" >> ./cockpit_credentials.txt
+else
+    echo "cockpit_credentials.txt already exists."
+fi

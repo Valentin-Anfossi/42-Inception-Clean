@@ -16,13 +16,17 @@ load_secrets() {
 
 load_secrets
 
-echo "Creating ftp user ${FTP_USER} with password ${FTP_PASSWORD}"
+echo "Creating ftp user ${FTP_USER}"
 
-ENCRYPTED_PASSWORD=$(openssl passwd -noverify "${FTP_PASSWORD}")
-
-useradd -m -p $ENCRYPTED_PASSWORD $FTP_USER
-
+#add the ftp_user to users and vsftpd userlist
+adduser --gecos "" --disabled-password $FTP_USER
+echo "${FTP_USER}:${FTP_PASSWORD}" | chpasswd
 echo $FTP_USER | tee -a /etc/vsftpd.userlist
 
-exec "$@"
+# vsftpd doesnt receive sigterm from docker (idk why)
+"$@" & #Launch CMD in the background (&)
+child=$! #Saves the last background pid in child
+trap 'kill 15 "$child; wait "$child"' SIGTERM #When SIGTERM execute KILL on child pid
+wait "$child" #Waiting for the CHILD to DIE :o
+
 

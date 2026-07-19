@@ -78,6 +78,40 @@ services:
       - wordpress
     secrets:
       - ftp_credentials
+    
+  static-website:
+    build: ./requirements/static-website
+    container_name: static-website
+    image: static-website
+    restart: always
+    ports:
+      - "80:80"
+    networks:
+      - inception_net
+
+  adminer:
+    build: ./requirements/adminer
+    container_name: adminer
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - inception_net
+    depends_on:
+      - mariadb
+
+  cockpit:
+    build: ./requirements/cockpit
+    container_name: cockpit
+    image: cockpit
+    restart: always
+    ports:
+      - "9090:9090"
+    networks:
+      - inception_net
+    secrets:
+      - cockpit_credentials
 
 volumes:
   wp-volume:
@@ -102,3 +136,5 @@ secrets:
     file: ../secrets/wp_credentials.txt
   ftp_credentials:
     file: ../secrets/ftp_credentials.txt
+  cockpit_credentials:
+    file: ../secrets/cockpit_credentials.txt

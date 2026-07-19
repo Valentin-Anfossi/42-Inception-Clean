@@ -1,0 +1,5 @@
+#ADD TO HOSTS vanfossi AND static
+#INSTALL GIT
+#INSTALL MAKE
+#INSTALL DOCKER
+#LAUNCH secrets_init.sh

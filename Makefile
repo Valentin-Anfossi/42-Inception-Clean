@@ -1,10 +1,15 @@
 all:
 	@mkdir -p ${HOME}/data/wp_data
 	@mkdir -p ${HOME}/data/db_data
+	@docker compose -f ./srcs/docker-compose.yml up --build -d nginx wordpress mariadb
+
+bonus:
+	@mkdir -p ${HOME}/data/wp_data
+	@mkdir -p ${HOME}/data/db_data
 	@docker compose -f ./srcs/docker-compose.yml up --build -d
 
 up:
-	@docker compose -f ./srcs/docker-compose.yml up -d
+	@docker compose -f ./srcs/docker-compose.yml up -d nginx wordpress mariadb
 
 down:
 	@docker compose -f ./srcs/docker-compose.yml down
