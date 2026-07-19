@@ -1,5 +1,5 @@
+secrets/cockpit_credentials.txt
+secrets/ftp_credentials.txt
 secrets/sql_credentials.txt
 secrets/wp_credentials.txt
-secrets/ftp_credentials.txt
-secrets/cockpit_credentials.txt
 en.subject.pdf
