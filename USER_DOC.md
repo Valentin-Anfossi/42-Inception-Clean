@@ -23,6 +23,7 @@ All operations go through the `Makefile` at the root of the project:
 | Command | Effect |
 |---|---|
 | `make all` | Builds the images and starts the containers |
+| `make bonus` | Builds the images with bonuses and starts the containers |
 | `make up` | Starts all containers without building |
 | `make down` | Stops all containers |
 | `make re` | Stops, rebuilds, and restarts the containers |
@@ -33,6 +34,13 @@ All operations go through the `Makefile` at the root of the project:
 
 - **Website**: open a browser and go to `https://localhost` or `https://[username].42.fr`
 - **WordPress admin panel**: `https://localhost/wp-admin/` or `https://[username].42.fr/wp-admin/`
+
+## 3.1 Accessing bonuses
+
+- **ftp**: use filezilla on port 21 with the credentials you filled in secrets
+- **adminer**: open a browser and go to `http://localhost:8080`
+- **static website**: open a browser and go to `http://localhost:80` 
+- **cockpit**: open a browser and go to `http://localhost:9090`
 
 ## 4. Managing Credentials
 

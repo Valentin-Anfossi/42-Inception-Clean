@@ -22,14 +22,14 @@ adduser --gecos "" --disabled-password $COCKPIT_USER
 echo "${COCKPIT_USER}:${COCKPIT_PASSWORD}" | chpasswd
 usermod -aG sudo $COCKPIT_USER
 
-#Launch nginx in background
+#Launch cockpit in background
 ./usr/lib/cockpit/cockpit-ws --no-tls &
 cockpit_pid=$!
 
-#Trap sigterm to kill both
+#Trap sigterm to kill
 trap 'kill -TERM "$php_pid" "$cockpit_pid"; wait' SIGTERM
 
-#Wait for one to die
+#Wait for cockpit to die
 wait "$cockpit_pid"
 
 exec "$@"

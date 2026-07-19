@@ -22,7 +22,7 @@ The project relies on two kinds of configuration:
 
 **Environment variables** (`.env` at the project root, or per-service), typically defining things like:
 ```
-DOMAIN_NAME=[username].42.fr
+WP_TITLE=Inception
 ```
 
 **Docker secrets**, stored as plain text files in the `secrets/` folder and never committed to version control. Two files are required:
@@ -41,6 +41,18 @@ SQL_ADMIN_PASSWORD=xxx
 WP_ADMIN_USER=xxx
 WP_ADMIN_PASSWORD=xxx
 WP_ADMIN_EMAIL=xxx
+```
+
+`secrets/cockpit_credentials.txt`
+```
+COCKPIT_USER=xxx
+COCKPIT_PASSWORD=xxx
+```
+
+`secrets/ftp_credentials.txt`
+```
+FTP_USER=xxx
+FTP_PASSWORD=xxx
 ```
 
 An **interactive script** `secrets_init.sh` located in ./secrets/ can generate the files for you.
