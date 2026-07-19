@@ -56,8 +56,8 @@ services:
     environment:
       - USERNAME=$USERNAME
     depends_on:
-      - mariadb
       - redis
+      - mariadb
     secrets:
       - sql_credentials
       - wp_credentials
