@@ -1,5 +1,7 @@
 FROM debian:bookworm
 
+ARG BUILD=normal
+
 RUN apt-get update -y
 
 RUN apt-get install -y \
@@ -20,11 +22,16 @@ RUN chmod +x /usr/local/bin/wordpress_run.sh
 RUN sed -i 's|listen = /run/php/php8.2-fpm.sock|listen = 9000|' /etc/php/8.2/fpm/pool.d/www.conf
 RUN sed -i 's|;clear_env = no|clear_env = no|' /etc/php/8.2/fpm/pool.d/www.conf
 
+
 # Install WP-CLI
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 RUN mkdir -p /var/www/html/
 
-ENTRYPOINT ["/usr/local/bin/wordpress_run.sh"]
+#ADD REDIS IF BUILD BONUS
+RUN if ["$BUILD" = "bonus"]; then \
+    
+    fi
+ENTRYPOINT ["/usr/local/bin/wordpress_run.sh","${BUILD}}"]
 
 CMD ["php-fpm8.2", "--nodaemonize"]

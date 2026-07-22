@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Cmd for mounting vbox shared folder
-#sudo mount -t vboxsf inception /usr/local/inception
+#sudo mount -t vboxsf <name of shared folder> <path mounted in vm>
 
 #INSTALL GIT
 sudo apt install git -y
@@ -61,7 +61,6 @@ else
 fi
 
 #LAUNCH secrets_init.sh
-cd secrets
 sudo bash ./secrets_init.sh
 
 echo "==================INCEPTION INSTALLED"

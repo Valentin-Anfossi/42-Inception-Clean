@@ -14,6 +14,8 @@ services:
       - "./.env"
     depends_on:
       - wordpress
+    args:
+      build_bonus: "${BUILD_BONUS:-no}"
 
   mariadb:
     build: ./requirements/mariadb
@@ -29,18 +31,8 @@ services:
     secrets:
       - sql_credentials
       - wp_credentials
-
-  redis:
-    build: ./requirements/redis
-    container_name: redis
-    image: redis
-    restart: always
-    networks:
-      - inception_net
-    env_file:
-      - "./.env"
-    volumes:
-      - wp-volume:/var/www/html
+    args:
+      build_bonus: no
 
   wordpress:
     build: ./requirements/wordpress
@@ -61,9 +53,26 @@ services:
     secrets:
       - sql_credentials
       - wp_credentials
+    args:
+      build_bonus: no
+  
+  redis:
+    build: ./requirements/bonus/redis
+    container_name: redis
+    image: redis
+    restart: always
+    networks:
+      - inception_net
+    env_file:
+      - "./.env"
+    volumes:
+      - wp-volume:/var/www/html
+    args:
+      build_bonus: no
+
     
   ftp:
-    build: ./requirements/ftp
+    build: ./requirements/bonus/ftp
     container_name: ftp
     image: ftp
     restart: always
@@ -78,9 +87,11 @@ services:
       - wordpress
     secrets:
       - ftp_credentials
+    args:
+      build_bonus: no
     
   static-website:
-    build: ./requirements/static-website
+    build: ./requirements/bonus/static-website
     container_name: static-website
     image: static-website
     restart: always
@@ -88,9 +99,11 @@ services:
       - "80:80"
     networks:
       - inception_net
+    args:
+      build_bonus: no
 
   adminer:
-    build: ./requirements/adminer
+    build: ./requirements/bonus/adminer
     container_name: adminer
     image: adminer
     restart: always
@@ -100,9 +113,11 @@ services:
       - inception_net
     depends_on:
       - mariadb
+    args:
+      build_bonus: no
 
   cockpit:
-    build: ./requirements/cockpit
+    build: ./requirements/bonus/cockpit
     container_name: cockpit
     image: cockpit
     restart: always
@@ -112,6 +127,8 @@ services:
       - inception_net
     secrets:
       - cockpit_credentials
+    args:
+      build_bonus: no
 
 volumes:
   wp-volume:
@@ -124,6 +141,8 @@ volumes:
       type: none
       device: "$HOME/data/db_data"
       o: bind
+    args:
+      build_bonus: no
 
 networks:
   inception_net:
