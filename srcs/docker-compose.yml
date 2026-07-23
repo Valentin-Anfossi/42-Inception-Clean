@@ -14,8 +14,6 @@ services:
       - "./.env"
     depends_on:
       - wordpress
-    args:
-      build_bonus: "${BUILD_BONUS:-no}"
 
   mariadb:
     build: ./requirements/mariadb
@@ -31,8 +29,6 @@ services:
     secrets:
       - sql_credentials
       - wp_credentials
-    args:
-      build_bonus: no
 
   wordpress:
     build: ./requirements/wordpress
@@ -53,8 +49,6 @@ services:
     secrets:
       - sql_credentials
       - wp_credentials
-    args:
-      build_bonus: no
   
   redis:
     build: ./requirements/bonus/redis
@@ -67,8 +61,6 @@ services:
       - "./.env"
     volumes:
       - wp-volume:/var/www/html
-    args:
-      build_bonus: no
 
     
   ftp:
@@ -87,8 +79,6 @@ services:
       - wordpress
     secrets:
       - ftp_credentials
-    args:
-      build_bonus: no
     
   static-website:
     build: ./requirements/bonus/static-website
@@ -99,8 +89,6 @@ services:
       - "80:80"
     networks:
       - inception_net
-    args:
-      build_bonus: no
 
   adminer:
     build: ./requirements/bonus/adminer
@@ -113,8 +101,6 @@ services:
       - inception_net
     depends_on:
       - mariadb
-    args:
-      build_bonus: no
 
   cockpit:
     build: ./requirements/bonus/cockpit
@@ -127,8 +113,6 @@ services:
       - inception_net
     secrets:
       - cockpit_credentials
-    args:
-      build_bonus: no
 
 volumes:
   wp-volume:
@@ -141,8 +125,6 @@ volumes:
       type: none
       device: "$HOME/data/db_data"
       o: bind
-    args:
-      build_bonus: no
 
 networks:
   inception_net:
@@ -150,10 +132,10 @@ networks:
 
 secrets:
   sql_credentials:
-    file: ../secrets/sql_credentials.txt
+    file: ../secrets/db_credentials.txt
   wp_credentials:
     file: ../secrets/wp_credentials.txt
   ftp_credentials:
-    file: ../secrets/ftp_credentials.txt
+    file: ../secrets/bonus/ftp_credentials.txt
   cockpit_credentials:
-    file: ../secrets/cockpit_credentials.txt
+    file: ../secrets/bonus/cockpit_credentials.txt

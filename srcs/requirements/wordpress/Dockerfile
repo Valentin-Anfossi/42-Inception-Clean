@@ -28,10 +28,6 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 RUN mkdir -p /var/www/html/
 
-#ADD REDIS IF BUILD BONUS
-RUN if ["$BUILD" = "bonus"]; then \
-    
-    fi
-ENTRYPOINT ["/usr/local/bin/wordpress_run.sh","${BUILD}}"]
+ENTRYPOINT ["/usr/local/bin/wordpress_run.sh"]
 
 CMD ["php-fpm8.2", "--nodaemonize"]
